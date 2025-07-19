@@ -1,0 +1,8 @@
+dataset:
+  labels:
+    '0': background
+    '1': kidney
+    '2': tumor
+    '3': cyst
+  name: kits23_phase3
+  root: ../Dataset/kits23_IL/phase3
