@@ -1,0 +1,28 @@
+defaults:
+  - _self_
+  - model: hermes
+  - scheduler: cosine
+  - optimizer: adamw
+  - dataset: kits23_phase3
+  - task: default
+  - trainer: default
+
+trainer:
+  max_epochs: 300
+  resume: false
+  amp: false
+  val_interval: 10
+  save_ckpt: true
+
+model:
+  name: hermes
+  num_classes: 4
+  pretrained_ckpt: outputs/phase2/checkpoint.pt
+  task_tokens: ["kidney", "tumor", "cyst"]
+  freeze_encoder: false
+
+dataset:
+  root: ${dataset.root}
+  name: ${dataset.name}
+  labels: ${dataset.labels}
+  batch_size: 1

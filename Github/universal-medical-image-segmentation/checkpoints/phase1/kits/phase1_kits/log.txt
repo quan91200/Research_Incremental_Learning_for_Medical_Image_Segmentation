@@ -1,0 +1,9 @@
+[INFO] 2025-07-19 23:08:05 train.py:401 
+Dataset: kits,
+Model: hermes_resunet,
+Dimension: 3d
+[INFO] 2025-07-19 23:08:06 train.py:337 Use EMA model for evaluation
+[INFO] 2025-07-19 23:08:06 train.py:428 Created Model
+[INFO] 2025-07-19 23:08:06 train.py:101 Created Dataset and DataLoader
+[INFO] 2025-07-19 23:08:06 train.py:123 Starting epoch 1/200
+[INFO] 2025-07-19 23:08:06 train.py:125 Current lr: 9.0894e-08

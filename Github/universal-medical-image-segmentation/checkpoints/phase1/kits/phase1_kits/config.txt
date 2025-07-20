@@ -1,0 +1,67 @@
+dataset: kits
+model: hermes_resunet
+dimension: 3d
+pretrain: False
+amp: False
+torch_compile: False
+batch_size: 2
+resume: False
+load: False
+cp_path: checkpoints/phase1
+log_path: runs/phase1/kits
+unique_name: phase1_kits
+gpu: cpu
+data_root: /home/cobham/Research_Incremental_Learning_for_Medical_Image_Segmentation/Dataset/kits23_IL/phase1
+arch: resunet
+in_chan: 1
+base_chan: 32
+down_scale: [[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]]
+kernel_size: [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]
+block: BasicBlock
+num_block: [2, 2, 2, 2]
+norm: in
+tn: 6
+mn: 4
+epochs: 200
+training_size: [128, 128, 128]
+start_epoch: 0
+num_workers: 2
+aug_device: cpu
+dataset_name_list: ['kits']
+dataset_classes_list: [2]
+split_seed: 0
+k_fold: 1
+image_dir: images
+label_dir: labels
+image_postfix: .npy
+label_postfix: .npy
+modality: [0]
+optimizer: adamw
+base_lr: 0.002
+betas: [0.9, 0.999]
+warmup_epoch: 5
+weight_decay: 1e-05
+rlt: 1
+loss_mod_weight: 0.01
+scale: [0.3, 0.3, 0.3]
+rotate: [30, 30, 30]
+translate: [0, 0, 0]
+gaussian_noise_std: 0.02
+print_freq: 5
+iter_per_epoch: 400
+ema: True
+ema_alpha: 0.99
+val_freq: 25
+sliding_window: True
+window_size: [128, 128, 128]
+world_size: 0
+proc_idx: 0
+rank: 0
+port: 10009
+dist_url: env://
+dist_backend: nccl
+multiprocessing_distributed: False
+reproduce_seed: None
+distributed: False
+ngpus_per_node: 0
+cp_dir: checkpoints/phase1/kits/phase1_kits

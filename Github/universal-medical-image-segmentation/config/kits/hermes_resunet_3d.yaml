@@ -1,0 +1,71 @@
+#DATA
+data_root: /home/cobham/Research_Incremental_Learning_for_Medical_Image_Segmentation/Dataset/kits23_IL/phase1
+#MODEL
+arch: resunet
+in_chan: 1
+base_chan: 32
+down_scale: [[2,2,2], [2,2,2], [2,2,2], [2,2,2]]
+kernel_size: [[3,3,3], [3,3,3], [3,3,3], [3,3,3], [3,3,3]]
+block: BasicBlock
+num_block: [2, 2, 2, 2]
+norm: in
+tn: 6
+mn: 4
+
+#TRAIN
+epochs: 200
+training_size: [128, 128, 128] # training crop size
+start_epoch: 0
+num_workers: 2
+aug_device: 'cpu'
+
+dataset_name_list: ['kits']
+dataset_classes_list: [2]
+split_seed: 0
+k_fold: 1
+image_dir: images
+label_dir: labels
+image_postfix: .npy
+label_postfix: .npy
+modality: [0]
+
+optimizer: adamw
+base_lr: 0.002
+betas: [0.9, 0.999]
+warmup_epoch: 5
+weight_decay: 0.00001  # weight decay of SGD optimizer
+rlt: 1 # relation between CE and Dice loss
+loss_mod_weight: 0.01
+
+scale: [0.3, 0.3, 0.3]  # scale for data augmentation  0.1 0.3 0.3
+rotate: [30, 30, 30] # rotation angle for data augmentation 
+translate: [0, 0, 0]
+gaussian_noise_std: 0.02
+
+print_freq: 5
+iter_per_epoch: 400
+
+
+#VALIDATION
+ema: True
+ema_alpha: 0.99
+val_freq: 25
+
+
+
+#INFERENCE
+sliding_window: True
+window_size: [128, 128, 128]
+
+
+
+
+# DDP
+world_size: 1
+proc_idx: 0
+rank: 0
+port: 10009
+dist_url: 'env://' # the port number here should be the same as the previous one
+dist_backend: "nccl"
+multiprocessing_distributed: true
+reproduce_seed: null

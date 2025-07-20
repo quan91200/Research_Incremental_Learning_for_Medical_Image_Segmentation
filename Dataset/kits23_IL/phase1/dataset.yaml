@@ -1,0 +1,6 @@
+dataset:
+  labels:
+    '0': background
+    '1': kidney
+  name: kits23_phase1
+  root: ../Dataset/kits23_IL/phase1

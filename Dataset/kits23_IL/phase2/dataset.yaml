@@ -1,0 +1,7 @@
+dataset:
+  labels:
+    '0': background
+    '1': kidney
+    '2': tumor
+  name: kits23_phase2
+  root: ../Dataset/kits23_IL/phase2
